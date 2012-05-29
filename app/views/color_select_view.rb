@@ -13,7 +13,7 @@ class ColorSelectView < UIScrollView
     colors.each_with_index do |(color, name), i|
       colorButton = UIButton.buttonWithType(UIButtonTypeCustom)
       colorButton.backgroundColor = color
-      colorButton.layer.cornerRadius = 3.0
+      colorButton.layer.cornerRadius = 5.0
       colorButton.addTarget(delegate, action:'colorShouldChange:', forControlEvents:UIControlEventTouchUpInside)
       colorButton.frame = [[20 + i * 60, 5], [40, 40]]
       colorButton.tag = i + 100

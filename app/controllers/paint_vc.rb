@@ -5,8 +5,8 @@ class PaintVC < UIViewController
     [UIColor.colorWithRed(255/255.0, green:224/255.0, blue:130/255.0, alpha:1.0) , "ljus_gul"],
     [UIColor.colorWithRed(146/255.0, green:117/255.0, blue:103/255.0, alpha:1.0) , "mullvad_brun"],
     [UIColor.colorWithRed(132/255.0, green:18/255.0,  blue:18/255.0,  alpha:1.0) , "falu_rod"],
-    [UIColor.colorWithRed(174/255.0, green:179/255.0, blue:178/255.0, alpha:1.0) , "vasa_svart"], 
-    [UIColor.colorWithRed(66/255.0,  green:87/255.0,  blue:97/255.0,  alpha:1.0) , "kiruna_gra"],
+    [UIColor.colorWithRed(0/255.0,   green:0/255.0,   blue:0/255.0,   alpha:1.0) , "vasa_svart"], 
+    [UIColor.colorWithRed(174/255.0, green:179/255.0, blue:178/255.0, alpha:1.0) , "kiruna_gra"],
     [UIColor.colorWithRed(118/255.0, green:143/255.0, blue:151/255.0, alpha:1.0) , "skiffer_gra"],
     [UIColor.colorWithRed(66/255.0,  green:87/255.0,  blue:97/255.0,  alpha:1.0) , "blytunga_svart"], 
     [UIColor.colorWithRed(118/255.0, green:189/255.0, blue:213/255.0, alpha:1.0) , "ljus_bla"],
@@ -35,21 +35,21 @@ class PaintVC < UIViewController
     # buttons
     registrationButton = UIButton.buttonWithType(UIButtonTypeCustom)
     registrationButton.frame = [[20, 10], [40, 40]]
-    registrationButton.setImage(UIImage.imageNamed("account.png"), forState:UIControlStateNormal)
+    registrationButton.setImage(UIImage.imageNamed("user.png"), forState:UIControlStateNormal)
     registrationButton.addTarget(self, action:'showRegistrationPane', forControlEvents:UIControlEventTouchUpInside)
     @bottomView.addSubview(registrationButton)
+        
+    calculatorButton = UIButton.buttonWithType(UIButtonTypeCustom)
+    calculatorButton.frame = [[70, 10], [40, 40]]
+    calculatorButton.setImage(UIImage.imageNamed("tags.png"), forState:UIControlStateNormal)
+    calculatorButton.addTarget(self, action:'showCalculatorPane', forControlEvents:UIControlEventTouchUpInside)
+    @bottomView.addSubview(calculatorButton)
     
     shareButton = UIButton.buttonWithType(UIButtonTypeCustom)
-    shareButton.frame = [[70, 10], [40, 40]]
+    shareButton.frame = [[260, 10], [40, 40]]
     shareButton.setImage(UIImage.imageNamed("share.png"), forState:UIControlStateNormal)
     shareButton.addTarget(self, action:'showActionPane', forControlEvents:UIControlEventTouchUpInside)
     @bottomView.addSubview(shareButton)
-    
-    calculatorButton = UIButton.buttonWithType(UIButtonTypeCustom)
-    calculatorButton.frame = [[120, 10], [40, 40]]
-    calculatorButton.setImage(UIImage.imageNamed("calculator.png"), forState:UIControlStateNormal)
-    calculatorButton.addTarget(self, action:'showCalculatorPane', forControlEvents:UIControlEventTouchUpInside)
-    @bottomView.addSubview(calculatorButton)
     
     # modals
     @registrationVC = RegistrationVC.alloc.initWithStyle(UITableViewStyleGrouped)
@@ -93,6 +93,7 @@ class PaintVC < UIViewController
     # puts "color hit:"
     # puts (Colors[aButton.tag - 100])[1] 
     self.toggleAnimation
+    @stackImageView.switchColor((Colors[aButton.tag - 100])[1])
   end
   
 end
