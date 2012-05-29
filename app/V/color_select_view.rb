@@ -15,18 +15,9 @@ class ColorSelectView < UIScrollView
       colorButton.backgroundColor = color
       colorButton.layer.cornerRadius = 3.0
       colorButton.addTarget(delegate, action:'colorShouldChange:', forControlEvents:UIControlEventTouchUpInside)
-      colorButton.frame = [[20 + i * 60, 10], [40, 40]]
+      colorButton.frame = [[20 + i * 60, 5], [40, 40]]
       colorButton.tag = i + 100
       self.addSubview(colorButton)
     end
-  end
-  
-  #... intercept touches
-  def touchesBegan(touches, withEvent:event)
-  
-  end
-  
-  def touchesEnded(touches, withEvent:event)
-    @previousPoint = nil
   end
 end

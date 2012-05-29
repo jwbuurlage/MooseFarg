@@ -1,5 +1,5 @@
 class AppDelegate
-  def application(application, didFinishLaunchingWithOptions:launchOptions)
+  def application(application, didFinishLaunchingWithOptions:launchOptions)    
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
     @window.rootViewController = PaintVC.alloc.init
     @window.makeKeyAndVisible

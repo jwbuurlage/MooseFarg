@@ -36,7 +36,6 @@ class RegistrationVC < UITableViewController
     
     tableView.tableHeaderView = headerView
     tableView.tableFooterView = footerView
-    
   end
   
   # Data-source
@@ -86,7 +85,5 @@ class RegistrationVC < UITableViewController
   
   def actionTapped
     delegate.dismissViewControllerAnimated(true, completion:lambda {})
-  end
-  
-  
+  end  
 end

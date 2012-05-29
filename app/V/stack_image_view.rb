@@ -1,4 +1,6 @@
 class StackImageView < UIScrollView
+  attr_accessor :tap_delegate
+  
   def initWithFrame(aFrame)
     if super
       @backgroundImage = UIImageView.alloc.initWithImage(UIImage.imageNamed("tuinhuis.jpg"))
@@ -6,18 +8,20 @@ class StackImageView < UIScrollView
       self.addSubview(@backgroundImage)
       self.contentSize = @backgroundImage.frame.size
       self.scrollEnabled = true
-      self.minimumZoomScale = 0.5;
+      self.minimumZoomScale = 0.6;
       self.maximumZoomScale = 3;
-      self.zoomScale = 0.5
       self.delegate = self
+      
+      # Gesture recognizers
+      @tapRecognizer = UITapGestureRecognizer.alloc.initWithTarget(self, action:"tapRecognized:")
+      self.addGestureRecognizer(@tapRecognizer)
     end
     self
   end
-  
-  def applyFilter 
-    filter = CIFilter.filterWithName("CIBloom")
-    filter.setDefaults
     
+  def tapRecognized(obj)
+    puts "#{obj.locationInView(@backgroundImage).x}, #{obj.locationInView(@backgroundImage).y}"
+    tap_delegate.toggleAnimation
   end
     
   def makeLayers(layers)
@@ -25,7 +29,7 @@ class StackImageView < UIScrollView
       
     end
   end
-  
+
   # UIScrollViewDelegate
   def scrollViewDidZoom(scrollView)
     
@@ -34,7 +38,6 @@ class StackImageView < UIScrollView
   def viewForZoomingInScrollView(scrollView) 
       @backgroundImage
   end
-  
 end
 
 class StackLayer < UIImageView
