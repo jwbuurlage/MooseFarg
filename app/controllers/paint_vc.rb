@@ -16,6 +16,11 @@ class PaintVC < UIViewController
   ]
   
   ToggleDuration = 0.3
+  
+  # Sharing descriptions
+  MailSubject = "MooseFarg kleurenkiezer"
+  MailFilename = "moosefarg-kleuren-kiezer"
+  MailBody = "Wat vind je van deze kleuren?!"
     
   def viewDidLoad    
     # image + bottom
@@ -58,8 +63,8 @@ class PaintVC < UIViewController
                                                     delegate:self, 
                                                     cancelButtonTitle:"Annuleer", 
                                                     destructiveButtonTitle:nil, 
-                                                    otherButtonTitles:"Facebook", "Twitter", "Google +", "E-mail", nil)
-    @calculatorVC = CalculatorVC.alloc.init
+                                                    otherButtonTitles:"Twitter", "E-mail", "Google +", "Facebook", nil)
+    @calculatorVC = CalculatorVC.alloc.initWithStyle(UITableViewStyleGrouped)
     @calculatorVC.delegate = self
   end
   
@@ -96,4 +101,33 @@ class PaintVC < UIViewController
     @stackImageView.switchColor((Colors[aButton.tag - 100])[1])
   end
   
+  # Sharing functionality
+  def actionSheet(sheet, clickedButtonAtIndex:index)
+    case index
+    when 0
+      self.tweetPhoto
+    when 1
+      self.mailPhoto
+    end
+  end
+  
+  def tweetPhoto
+    controller = TWTweetComposeViewController.new
+    controller.addImage(@stackImageView.getImage)
+    controller.completionHandler = lambda { |result| }
+    presentModalViewController(controller, animated:true)
+  end
+  
+  def mailPhoto
+    mailer = MFMailComposeViewController.alloc.init
+    mailer.mailComposeDelegate = self
+    mailer.setSubject(MailSubject)
+    mailer.addAttachmentData(UIImagePNGRepresentation(@stackImageView.getImage), mimeType:"image/png", fileName:MailFilename)
+    mailer.setMessageBody(MailBody, isHTML:false)
+    self.presentModalViewController(mailer, animated:true)
+  end
+  
+  def mailComposeController(controller, didFinishWithResult:result, error:error)
+    self.dismissModalViewControllerAnimated(true)
+    end
 end

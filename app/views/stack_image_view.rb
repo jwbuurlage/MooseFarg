@@ -6,10 +6,10 @@ class StackImageView < UIScrollView
   Layers = [
     ["deur",        [[185, 180], [32, 135]]],
     ["deurkozijn",  [[181, 172], [41, 147]]],
-    ["hoekprofiel", [[0, 0], [100, 10]]],
+    ["hoekprofiel", [[85, 137], [457, 181]]],
     ["muren",       [[85, 37], [436, 292]]],
     ["ramen",       [[97, 164], [379, 108]]],
-    ["windveer",    [[0, 0], [100, 100]]]
+    ["windveer",    [[280, 20], [272, 178]]]
   ] 
   
   def initWithFrame(aFrame)
@@ -36,11 +36,17 @@ class StackImageView < UIScrollView
     end
     self
   end
+  
+  def getImage
+    @layeredImage.image
+  end
     
   def tapRecognized(obj)    
-    if @layers[0].inView?(obj.locationInView(@layers[0]))
+    index = 3
+    
+    if @layers[index].inView?(obj.locationInView(@layers[index])) && @layers[index].pointOpaque?(obj.locationInView(@layers[index]))
       tap_delegate.toggleAnimation
-      @highlightedElement = 0
+      @highlightedElement = index
     end
   end
     
@@ -78,8 +84,23 @@ class UIView
     end
     true
   end
+  
+  def image
+    UIGraphicsBeginImageContext(bounds.size);
+
+    layer.renderInContext(UIGraphicsGetCurrentContext())
+    viewImage = UIGraphicsGetImageFromCurrentImageContext();
+
+    UIGraphicsEndImageContext();
+    
+    viewImage
+  end
 end
 
 class StackLayer < UIImageView
-
+  # generate transparency map
+  # make a hit test
+  def pointOpaque?(point)
+    true
+  end
 end
