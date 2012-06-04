@@ -74,7 +74,7 @@ class RegistrationVC < UITableViewController
   
   # UITextField delegate
   def textFieldDidEndEditing(textField)
-    # select by placeholder
+    self.textFieldFinished(textField)
   end
   
   def textFieldFinished(textField)

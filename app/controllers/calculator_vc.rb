@@ -54,8 +54,39 @@ class CalculatorVC < UITableViewController
     cell = UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:nil)
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
   	cell.textLabel.text = type[0];
-		  	
+  	
+    tf = UITextField.alloc.init
+    tf.placeholder = "0"
+    tf.textColor = UIColor.colorWithRed(0.22, green:0.33, blue:0.5, alpha:1.0)
+		tf.addTarget(self, action:"textFieldFinished:", forControlEvents:UIControlEventEditingDidEndOnExit)
+  	tf.delegate = self
+  	tf.frame = [[160, 12], [30, 30]]
+    tf.adjustsFontSizeToFitWidth = true
+    tf.tag = 100 + indexPath.row
+  	cell.addSubview(tf)
+		
+		meterFrame = [[190, 12], [0, 0]]
+		meterLabel = UILabel.alloc.initWithFrame(meterFrame)
+		meterLabel.text = "m2"
+		meterLabel.font = UIFont.boldSystemFontOfSize(16.0)
+    meterLabel.textColor = UIColor.colorWithRed(0.22, green:0.33, blue:0.5, alpha:1.0)
+    meterLabel.sizeToFit
+    meterLabel.backgroundColor = UIColor.colorWithRed(0.0, green:0.0, blue:0.0, alpha:0.0)
+		cell.addSubview(meterLabel)
+		
   	cell
+  end
+  
+  # textfield delegate
+  
+  def textFieldDidEndEditing(textField)
+    self.textFieldFinished(textField)
+  end
+  
+  def textFieldFinished(tf)
+    id = tf.tag - 100
+    m2 = tf.text.to_i
+    puts id
   end
   
   def actionTapped

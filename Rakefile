@@ -6,4 +6,5 @@ Motion::Project::App.setup do |app|
   app.name = 'MooseFarg'
   app.frameworks += ['QuartzCore', 'CoreImage', 'Twitter', 'MessageUI']
   app.codesign_certificate = 'iPhone Developer: Jan-Willem Buurlage (PY7NEDDF88)'
+  app.provisioning_profile = '/Users/jwbuurlage/Library/MobileDevice/Provisioning Profiles/B4988271-6694-49A0-BAF0-7E8B298F3768.mobileprovision'	
 end

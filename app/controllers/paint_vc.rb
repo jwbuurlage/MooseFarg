@@ -21,6 +21,8 @@ class PaintVC < UIViewController
   MailSubject = "MooseFarg kleurenkiezer"
   MailFilename = "moosefarg-kleuren-kiezer"
   MailBody = "Wat vind je van deze kleuren?!"
+  
+  TwitterText = "Wat vinden jullie van deze verfcombinatie? \#moosefarg"
     
   def viewDidLoad    
     # image + bottom
@@ -63,7 +65,9 @@ class PaintVC < UIViewController
                                                     delegate:self, 
                                                     cancelButtonTitle:"Annuleer", 
                                                     destructiveButtonTitle:nil, 
-                                                    otherButtonTitles:"Twitter", "E-mail", "Google +", "Facebook", nil)
+                                                    otherButtonTitles:"Twitter", "E-mail", nil)
+                                                     #"Google +", "Facebook",
+                                                     
     @calculatorVC = CalculatorVC.alloc.initWithStyle(UITableViewStyleGrouped)
     @calculatorVC.delegate = self
   end
@@ -113,6 +117,7 @@ class PaintVC < UIViewController
   
   def tweetPhoto
     controller = TWTweetComposeViewController.new
+    controller.setInitialText(TwitterText)
     controller.addImage(@stackImageView.getImage)
     controller.completionHandler = lambda { |result| }
     presentModalViewController(controller, animated:true)
