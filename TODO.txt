@@ -1,0 +1,17 @@
+v 1.0 'AppStore'
+[x] Calculator afmaken, bestelknop bij zetten.
+[x] Registratieformulier werkend maken, eventueel minder fields.
+[x] Layers integreren
+[x] Icoon maken
+
+Plaatjes
+[ ] skane_gul van deurkozijn te licht
+[ ] mullvad_brun van hoekprofiel te licht
+[ ] kungsbla komt niet overeen met de kleur
+
+v 1.1 'iPad/Landscape'
+[ ] Bepaalde layers mergen
+[ ] Support voor Landscape modus
+[ ] iPad versie
+[ ] HowTo
+[ ] Facebook support (iOS 6.0)

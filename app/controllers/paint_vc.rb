@@ -2,27 +2,28 @@ class PaintVC < UIViewController
   Colors = [
     [UIColor.colorWithRed(252/255.0, green:254/255.0, blue:242/255.0, alpha:1.0) , "gradde"],
     [UIColor.colorWithRed(255/255.0, green:212/255.0, blue:72/255.0,  alpha:1.0) , "skane_gul"],
-    [UIColor.colorWithRed(255/255.0, green:224/255.0, blue:130/255.0, alpha:1.0) , "ljus_gul"],
+    #[UIColor.colorWithRed(255/255.0, green:224/255.0, blue:130/255.0, alpha:1.0) , "ljus_gul"],
     [UIColor.colorWithRed(146/255.0, green:117/255.0, blue:103/255.0, alpha:1.0) , "mullvad_brun"],
     [UIColor.colorWithRed(132/255.0, green:18/255.0,  blue:18/255.0,  alpha:1.0) , "falu_rod"],
     [UIColor.colorWithRed(0/255.0,   green:0/255.0,   blue:0/255.0,   alpha:1.0) , "vasa_svart"], 
     [UIColor.colorWithRed(174/255.0, green:179/255.0, blue:178/255.0, alpha:1.0) , "kiruna_gra"],
     [UIColor.colorWithRed(118/255.0, green:143/255.0, blue:151/255.0, alpha:1.0) , "skiffer_gra"],
     [UIColor.colorWithRed(66/255.0,  green:87/255.0,  blue:97/255.0,  alpha:1.0) , "blytunga_svart"], 
-    [UIColor.colorWithRed(118/255.0, green:189/255.0, blue:213/255.0, alpha:1.0) , "ljus_bla"],
+    [UIColor.colorWithRed(118/255.0, green:189/255.0, blue:213/255.0, alpha:1.0) , "ljusbla"],
     [UIColor.colorWithRed(0.0/255.0, green:152/255.0, blue:88/255.0,  alpha:1.0) , "dalarna_gron"],
     [UIColor.colorWithRed(54/255.0,  green:150/255.0, blue:170/255.0, alpha:1.0) , "bohus_bla"], 
-    [UIColor.colorWithRed(139/255.0, green:189/255.0, blue:130/255.0, alpha:1.0) , "amal_gron"]
+    [UIColor.colorWithRed(139/255.0, green:189/255.0, blue:130/255.0, alpha:1.0) , "amalgron"],
+    [UIColor.colorWithRed(54/255.0,  green:150/255.0, blue:200/255.0, alpha:1.0) , "kungsbla"]
   ]
   
   ToggleDuration = 0.3
   
   # Sharing descriptions
-  MailSubject = "MooseFarg kleurenkiezer"
-  MailFilename = "moosefarg-kleuren-kiezer"
-  MailBody = "Wat vind je van deze kleuren?!"
+  MailSubject = "Moose F\u00E4rg kleuren combinatie tester"
+  MailFilename = "moosefarg-kleurentester"
+  MailBody = "Wat vind je van deze Moose F\u00E4rg kleuren?"
   
-  TwitterText = "Wat vinden jullie van deze verfcombinatie? \#moosefarg"
+  TwitterText = "Wat vinden jullie van deze Moose F\u00E4rg verfcombinatie? \#moosefarg"
     
   def viewDidLoad    
     # image + bottom
@@ -116,11 +117,15 @@ class PaintVC < UIViewController
   end
   
   def tweetPhoto
-    controller = TWTweetComposeViewController.new
-    controller.setInitialText(TwitterText)
-    controller.addImage(@stackImageView.getImage)
-    controller.completionHandler = lambda { |result| }
-    presentModalViewController(controller, animated:true)
+    if TWTweetComposeViewController.canSendTweet then
+      controller = TWTweetComposeViewController.new
+      controller.setInitialText(TwitterText)
+      controller.addImage(@stackImageView.getImage)
+      controller.completionHandler = lambda { |result| dismissModalViewControllerAnimated(true) }
+      presentModalViewController(controller, animated:true)
+    else
+      self.dismissModalViewControllerAnimated(true)
+    end
   end
   
   def mailPhoto
@@ -134,5 +139,5 @@ class PaintVC < UIViewController
   
   def mailComposeController(controller, didFinishWithResult:result, error:error)
     self.dismissModalViewControllerAnimated(true)
-    end
+  end
 end
