@@ -9,7 +9,7 @@ class StackImageView < UIScrollView
     ["hoekprofiel", [[85, 157], [438, 170]]],
     ["muren",       [[88, 39], [428, 286]]],
     ["ramen",       [[98, 164], [379, 108]]],
-    ["windveer",    [[284, 10], [268, 176]]]
+    ["windveer",    [[284, 13], [272, 178]]]
   ]
   def initWithFrame(aFrame)    
     if super
@@ -45,6 +45,7 @@ class StackImageView < UIScrollView
     (0...Layers.length).each do |index|
       if @layers[index].inView?(obj.locationInView(@layers[index])) && @layers[index].pointOpaque?(obj.locationInView(@layers[index]))
         tap_delegate.toggleAnimation
+        tap_delegate.currentlyEditing = MFEditingLayer
         @highlightedElement = index
         break
       end    
@@ -65,6 +66,24 @@ class StackImageView < UIScrollView
     layer_name = Layers[@highlightedElement][0]
     if not (@layers[@highlightedElement].image = UIImage.imageNamed("layers/#{layer_name}/#{layer_name}_#{suffix}.png"))
       @layers[@highlightedElement].image = UIImage.imageNamed("layers/#{layer_name}/#{layer_name}_#{DefaultColor}.png")
+    end
+  end
+  
+  def switchColorForGroup(group, suffix)
+    indices = []
+    
+    case group
+    when MFGroupWall
+      indices += [ 3 ]
+    when MFGroupOther
+      indices += [ 0, 1, 2, 4, 5 ]
+    end
+    
+    indices.each do |i|
+      layer_name = Layers[i][0]
+      if not (@layers[i].image = UIImage.imageNamed("layers/#{layer_name}/#{layer_name}_#{suffix}.png"))
+        @layers[i].image = UIImage.imageNamed("layers/#{layer_name}/#{layer_name}_#{DefaultColor}.png")
+      end
     end
   end
 

@@ -37,16 +37,16 @@ class CalculatorVC < UITableViewController
     headerView.addSubview(infoView)
         
     ## FOOTER   
-    footerView = UIView.alloc.initWithFrame([[0, 0], [0, 75]])
+    footerView = UIView.alloc.initWithFrame([[0, 0], [0, 120]])
           
     orderButton = UIButton.buttonWithType(UIButtonTypeRoundedRect)
-    orderButton.frame = [[30, 10], [120, 45]]
+    orderButton.frame = [[10, 10], [300, 45]]
     orderButton.setTitle("Bestel", forState:UIControlStateNormal)
     orderButton.addTarget(self, action:'orderTapped', forControlEvents:UIControlEventTouchUpInside)
     footerView.addSubview(orderButton)
     
     hideButton = UIButton.buttonWithType(UIButtonTypeRoundedRect)
-    hideButton.frame = [[170, 10], [120, 45]]
+    hideButton.frame = [[10, 60], [300, 45]]
     hideButton.setTitle("Verberg", forState:UIControlStateNormal)
     hideButton.addTarget(self, action:'actionTapped', forControlEvents:UIControlEventTouchUpInside)
     footerView.addSubview(hideButton)
@@ -113,6 +113,9 @@ class CalculatorVC < UITableViewController
       tf.textColor = UIColor.colorWithRed(0.22, green:0.33, blue:0.5, alpha:1.0)
       tf.text = @amounts[tag].to_s
   	  tf.placeholder = "0"
+  	  tf.keyboardType = UIKeyboardTypeNumbersAndPunctuation
+  	  tf.addTarget(self, action:"textFieldStarted:", forControlEvents:UIControlEventEditingDidBegin)
+  	  tf.addTarget(self, action:"textFieldFinished:", forControlEvents:UIControlEventEditingDidEnd)
   		tf.addTarget(self, action:"textFieldFinished:", forControlEvents:UIControlEventEditingDidEndOnExit)
     	tf.delegate = self
       tf.adjustsFontSizeToFitWidth = true
@@ -152,8 +155,11 @@ class CalculatorVC < UITableViewController
   end
   
   # textfield delegate
-  def textFieldDidEndEditing(textField)
-    self.textFieldFinished(textField)
+ #def textFieldDidEndEditing(textField)
+  #  self.textFieldFinished(textField)
+ # end
+  def textFieldStarted(tf)
+    tf.text = ""
   end
   
   def textFieldFinished(tf)

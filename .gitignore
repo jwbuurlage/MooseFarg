@@ -7,3 +7,5 @@ resources/*.storyboardc
 resources_extra/*
 
 .DS_Store
+
+.dat*

@@ -4,14 +4,31 @@ v 1.0 'AppStore'
 [x] Layers integreren
 [x] Icoon maken
 
-Plaatjes
-[ ] skane_gul van deurkozijn te licht
-[ ] mullvad_brun van hoekprofiel te licht
-[ ] kungsbla komt niet overeen met de kleur
-
-v 1.1 'iPad/Landscape'
+v 1.1
+[x] Icoon verbeterd
+[x] InstructionsVC maken
+	[x] Top: layer met "Instructies" tekst
+	[x] Midden: Plaatjes met stappen (step class)
+	[x] Onder: Progress en <- -> buttons
+	[x] Na steps+1 keer verder klikken verbergt hij weer
+	[x] Belangrijk: Stand alone class voor gebruik in andere apps
+[x] In calculator; beginEditing moet text clearen, getallen toetsenbord
+[x] Knoppen verbreden en onder elkaar (registratie/calculator)
+[x] Venstertje om in knop bepaalde groepen layers te kleuren (muur / overig)
+[x] Icons for instructions and group painting
+[x] Add contact option at RegistrationVC
+BUG [x] skane_gul van deurkozijn te licht
+BUG [x] mullvad_brun van hoekprofiel te licht
+BUG [x] kungsbla komt niet overeen met de kleur
+BUG [x] Calculator verplicht op return
+[x] Check of registratievelden leeg zijn, evt. @ in e-mail etc.
+[x] Voor het opsturen de test-email weer veranderen in jan@moose..
+ 
+v 2.0 'iPad/Landscape'
+BUG [ ] kungsbla heeft geen eenduidige kleur
+[ ] User Prefs gebruiken om te checken of al dingen verstuurd of toegevoegd zijn
+[ ] Code opschonen voor andere resoluties (voorbereiding op landscape)
 [ ] Bepaalde layers mergen
 [ ] Support voor Landscape modus
 [ ] iPad versie
-[ ] HowTo
 [ ] Facebook support (iOS 6.0)

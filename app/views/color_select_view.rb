@@ -4,7 +4,7 @@ class ColorSelectView < UIScrollView
   def initWithFrame(theFrame, andColors:colors)
     if super
       self.initColorViews(colors)
-      self.contentSize = [colors.length * 60 + 40, frame.size.height]
+      self.contentSize = [colors.length * 60 + 20, frame.size.height]
     end
     self
   end
