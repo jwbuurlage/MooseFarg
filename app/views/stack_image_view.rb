@@ -82,6 +82,7 @@ class StackImageView < UIScrollView
     indices.each do |i|
       layer_name = Layers[i][0]
       if not (@layers[i].image = UIImage.imageNamed("layers/#{layer_name}/#{layer_name}_#{suffix}.png"))
+        puts "Missing image: layers/#{layer_name}/#{layer_name}_#{suffix}.png"
         @layers[i].image = UIImage.imageNamed("layers/#{layer_name}/#{layer_name}_#{DefaultColor}.png")
       end
     end
@@ -89,7 +90,19 @@ class StackImageView < UIScrollView
 
   # UIScrollViewDelegate
   def scrollViewDidZoom(scrollView)
+    subview = scrollView.subviews.objectAtIndex 0
     
+    offX = if(scrollView.bounds.size.width > scrollView.contentSize.width)
+           then 0.5 * (scrollView.bounds.size.width - scrollView.contentSize.width) 
+           else 0.0
+           end
+    offY = if(scrollView.bounds.size.height > scrollView.contentSize.height)
+          then 0.5 * (scrollView.bounds.size.height - scrollView.contentSize.height) 
+          else 0.0
+          end
+          
+    subview.center = [ scrollView.contentSize.width * 0.5 + offX, 
+                     scrollView.contentSize.height * 0.5 + offY]
   end
   
   def viewForZoomingInScrollView(scrollView) 

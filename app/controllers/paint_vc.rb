@@ -9,9 +9,9 @@ class PaintVC < UIViewController
   attr_accessor :currentlyEditing
   
   Colors = [
+    #[UIColor.colorWithRed(255/255.0, green:224/255.0, blue:130/255.0, alpha:1.0) , "ljus_gul"],
     [UIColor.colorWithRed(252/255.0, green:254/255.0, blue:242/255.0, alpha:1.0) , "gradde"],
     [UIColor.colorWithRed(255/255.0, green:212/255.0, blue:72/255.0,  alpha:1.0) , "skane_gul"],
-    #[UIColor.colorWithRed(255/255.0, green:224/255.0, blue:130/255.0, alpha:1.0) , "ljus_gul"],
     [UIColor.colorWithRed(146/255.0, green:117/255.0, blue:103/255.0, alpha:1.0) , "mullvad_brun"],
     [UIColor.colorWithRed(132/255.0, green:18/255.0,  blue:18/255.0,  alpha:1.0) , "falu_rod"],
     [UIColor.colorWithRed(0/255.0,   green:0/255.0,   blue:0/255.0,   alpha:1.0) , "vasa_svart"], 
@@ -22,7 +22,8 @@ class PaintVC < UIViewController
     [UIColor.colorWithRed(0.0/255.0, green:152/255.0, blue:88/255.0,  alpha:1.0) , "dalarna_gron"],
     [UIColor.colorWithRed(54/255.0,  green:150/255.0, blue:170/255.0, alpha:1.0) , "bohus_bla"], 
     [UIColor.colorWithRed(139/255.0, green:189/255.0, blue:130/255.0, alpha:1.0) , "amalgron"],
-    [UIColor.colorWithRed(88/255.0,  green:126/255.0, blue:193/255.0, alpha:1.0) , "kungsbla"]
+    [UIColor.colorWithRed(33/255.0,  green:93/255.0, blue:190/255.0, alpha:1.0) , "kungsbla"],
+    [UIColor.colorWithRed(80/255.0,  green:120/255.0, blue:180/255.0, alpha:1.0) , "sommarbla"]
   ]
   
   ToggleDuration = 0.3
@@ -61,9 +62,9 @@ class PaintVC < UIViewController
     @stackImageView.tap_delegate = self
     view.addSubview(@stackImageView)
     
-    @bottomView = UIView.alloc.initWithFrame([[0, 400], [320, 120]])
+    @bottomView = UIView.alloc.initWithFrame([[0, view.frame.size.height - 60], [view.frame.size.width, 120]])
     @bottomView.backgroundColor = UIColor.colorWithRed(0.0, green:0.0, blue:0.0, alpha: 0.8)    
-    @colorSelectView = ColorSelectView.alloc.initWithFrame([[0, 60], [320, 60]], andColors:Colors)
+    @colorSelectView = ColorSelectView.alloc.initWithFrame([[0, 60], [view.frame.size.width, 60]], andColors:Colors)
     @colorSelectView.delegate = self
     @bottomView.addSubview(@colorSelectView)
     view.addSubview(@bottomView)
@@ -132,11 +133,11 @@ class PaintVC < UIViewController
   def toggleAnimation        
     if @bottomViewHidden
       @buttons.each { |but| but.enabled = false }
-      UIView.animateWithDuration(ToggleDuration, animations:lambda { @bottomView.frame = [[0, 340], [320, 120]] })
+      UIView.animateWithDuration(ToggleDuration, animations:lambda { @bottomView.frame = [[0, view.frame.size.height - 120], @bottomView.frame.size] })
       @bottomViewHidden = false
     else
       @buttons.each { |but| but.enabled = true }
-      UIView.animateWithDuration(ToggleDuration, animations:lambda { @bottomView.frame = [[0, 400], [320, 120]] })
+      UIView.animateWithDuration(ToggleDuration, animations:lambda { @bottomView.frame = [[0, view.frame.size.height - 60], @bottomView.frame.size] })
       @bottomViewHidden = true
     end
   end
