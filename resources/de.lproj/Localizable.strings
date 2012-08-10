@@ -1,0 +1,48 @@
+/* Registration */
+registration_description = "Sie können sich hier eintragen für die Newsletter";
+
+name_field = "Name";
+city_field = "Ort";
+zip_field = "Postleitzahl";
+email_field = "E-mail";
+name_placeholder = "Alfred Döblin";
+city_placeholder = "Berlin";
+zip_placeholder = "1234";
+email_placeholder = "alfred@dtelecom.de";
+
+register_title = "Anmelden";
+hide_title = "Nicht zeigen";
+
+error_empty_field = "nicht eingetragen.";
+error_invalid_email = "Sie haben eine nicht gültige E mail Adresse eingetragen";
+cancel_title = "Abbrechen";
+
+/* Calculator */
+calculator_description = "Berechnen Sie hier die benötigte Farbmenge";
+calculator_information = "Moose F: Wände (glattes und bereits gemahltes Holz)\nMoose RDM: Türen, Möbel und Fensterrahmen\nMoose S: nur für rohen Holz";
+calculator_warning = "Wenn auf hochsaugfähige Material gefärbt ist, kann es bis zu 30% mehr Farbe erforderlich sein.";
+order_title = "Bestellen";
+
+wall = "Wand";
+other = "Sonstige";
+buckets_wall = "Eimer für die Wande";
+buckets_other = "Eimer für sonstige Anwendungen";
+
+/* Mail */
+mail_subject = "Moose Färg Farb combinationstester";
+mail_filename = "moosefarg-Farbtest";
+mail_body = "Was ist Ihre Meinung über diese Moose Färg Farben?";
+
+twitter_text = "Was ist Ihre Meinung über diese Moose Färg Farbcombination? #moosefarg";
+
+/* Instructions */
+instructions_title = "Anweisungen";
+step_color_element = "Selecteer een element, en geef hem een kleur. Es gibt mehr Farben, schleppen Sie hier";
+step_register = "Newsletter Registrierung";
+step_calculate = "Geben Sie hier die Oberfläche ein und berechnen Sie die benötigte Farbmenge";
+step_color_group = "Sie können auch eine Elementgruppe einfärben";
+step_share = "Teilen Sie Ihre Farbwahl mit sich selbst oder Freunde";
+
+/* Actions */
+action_share = "Teil mit sich selbst oder Freunde";
+action_group = "Gebe alle Elemente die gleiche Farbe";

@@ -18,7 +18,7 @@ def viewDidLoad
   titleView.backgroundColor = nil
   titleView.font = UIFont.boldSystemFontOfSize(24.0)
   titleView.textColor = UIColor.whiteColor
-  titleView.text = "Instructies"
+  titleView.text = t("instructions_title")
   titleView.textAlignment = UITextAlignmentCenter
   view.addSubview(titleView)
   

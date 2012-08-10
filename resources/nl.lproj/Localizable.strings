@@ -1,0 +1,48 @@
+/* Registration */
+registration_description = "Hier kunt u zich aanmelden voor de nieuwsbrief.";
+
+name_field = "Naam";
+city_field = "Plaats";
+zip_field = "Postcode";
+email_field = "E-mail";
+name_placeholder = "Jan Jansen";
+city_placeholder = "Hoofddorp";
+zip_placeholder = "1234 AB";
+email_placeholder = "jan@jansen.nl";
+
+register_title = "Registreer";
+hide_title = "Verberg";
+
+error_empty_field = "Er zijn lege velden.";
+error_invalid_email = "U heeft een ongeldig e-mail adres ingevuld";
+cancel_title = "Sluit";
+
+/* Calculator */
+calculator_description = "Bereken hier de hoeveelheid verf die u nodig heeft.";
+calculator_information = "Moose F: Muren (geschaafd en al geverfd hout)\nMoose RDM: Kozijnen, deuren, windveren\nMoose S: alleen voor ruw onbewerkt hout";
+calculator_warning = "Bij sterk zuigende ondergrond kan er 30% meer verf nodig zijn";
+order_title = "Bestel";
+
+wall = "Muur";
+other = "Overig";
+buckets_wall = "Emmers voor muur";
+buckets_other = "Emmers voor overig";
+
+/* Mail */
+mail_subject = "Moose Färg kleuren combinatie tester";
+mail_filename = "moosefarg-kleurentester";
+mail_body = "Wat vind je van deze Moose Färg kleuren?";
+
+twitter_text = "Wat vinden jullie van deze Moose Färg verfcombinatie? #moosefarg";
+
+/* Instructions */
+instructions_title = "Instructies";
+step_color_element = "Selecteer een element, en geef hem een kleur. U kunt meer kleuren selecteren door te slepen.";
+step_register = "Registreer voor de nieuwsbrief, of voeg ons toe aan uw adresboek.";
+step_calculate = "Vul de oppervlakte in, en bereken hoeveel verf u nodig heeft.";
+step_color_group = "U kunt ook een groep elementen tegelijk kleuren.";
+step_share = "Deel uw kleurencombinatie via E-mail of Twitter.";
+
+/* Actions */
+action_share = "Deel met uzelf of met uw vrienden";
+action_group = "Geef groepen elementen dezelfde kleur";

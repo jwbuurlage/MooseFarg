@@ -1,0 +1,47 @@
+/* Registration */
+registration_description = "Please register for the newsletter";
+
+name_field = "Name";
+city_field = "City";
+zip_field = "Postal code";
+email_field = "E-mail";
+name_placeholder = "John Johnson";
+city_placeholder = "London";
+zip_placeholder = "1234 AB";
+email_placeholder = "john@johnson.com";
+
+register_title = "Register";
+hide_title = "Hide";
+
+error_empty_field = "Please fill in empty spaces.";
+error_invalid_email = "Invalid Email address";
+cancel_title = "Close";
+
+/* Calculator */
+calculator_description = "Calculate the required quantity of paint here";
+calculator_information = "Moose F: Walls (for smooth and already treated wood)\nMoose RDM: Doors, furniture and window frames\nMoose S: exclusively for raw untreated wood";
+calculator_warning = "When painting on strongly absorbing material, up to 30% more paint may be required.";
+order_title = "Order";
+
+wall = "Wall";
+other = "Other";
+buckets_wall = "Buckets for wall";
+buckets_other = "Buckets for other applications";
+
+/* Mail */
+mail_subject = "Moose Färg color combination tester";
+mail_filename = "moosefarg-colortester";
+mail_body = "Do you like these Moose Färg colors?";
+twitter_text = "How do you like this Moose Färg combination? #moosefarg";
+
+/* Instructions */
+instructions_title = "Instructions";
+step_color_element = "Select an element and choose your color. You can also drag.";
+step_register = "Register for Newsletter";
+step_calculate = "Fill the surface area in and calculate the required amount of paint";
+step_color_group = "it is possible to select a group of elements";
+step_share = "Share your color combination through E-mail or Twitter.";
+
+/* Actions */
+action_share = "Share with yourself or with friends";
+action_group = "Give groups of elements the same color";

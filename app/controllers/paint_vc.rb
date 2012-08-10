@@ -29,12 +29,12 @@ class PaintVC < UIViewController
   ToggleDuration = 0.3
   
   # Sharing descriptions
-  MailSubject = "Moose F\u00E4rg kleuren combinatie tester"
-  MailFilename = "moosefarg-kleurentester"
-  MailBody = "Wat vind je van deze Moose F\u00E4rg kleuren?"
+  MailSubject = t("mail_subject")
+  MailFilename = t("mail_filename")
+  MailBody = t("mail_body")
   
-  TwitterText = "Wat vinden jullie van deze Moose F\u00E4rg verfcombinatie? \#moosefarg"
-    
+  TwitterText = t("twitter_text")
+  
   def viewDidLoad    
     @buttons ||= []
     
@@ -46,11 +46,11 @@ class PaintVC < UIViewController
     
     # intro steps
     steps = [ 
-      Step.new("kleur_element", "Selecteer een element, en geef hem een kleur. U kunt meer kleuren selecteren door te slepen."),
-      Step.new("registreer", "Registreer voor de nieuwsbrief, of voeg ons toe aan uw adresboek."),
-      Step.new("bereken", "Vul de oppervlakte in, en bereken hoeveel verf u nodig heeft."),
-      Step.new("kleur_groepen", "U kunt ook een groep elementen tegelijk kleuren."),
-      Step.new("deel", "Deel uw kleurencombinatie via E-mail of Twitter.")
+      Step.new("kleur_element", t("step_color_element")),
+      Step.new("registreer", t("step_register")),
+      Step.new("bereken", t("step_calculate")),
+      Step.new("kleur_groepen", t("step_color_group")),
+      Step.new("deel", t("step_share"))
     ]
     
     @instrVC.steps = steps
@@ -113,18 +113,18 @@ class PaintVC < UIViewController
     @registrationVC = RegistrationVC.alloc.initWithStyle(UITableViewStyleGrouped)
     @registrationVC.delegate = self
     
-    @shareSheet = UIActionSheet.alloc.initWithTitle("Deel met uzelf of met uw vrienden", 
+    @shareSheet = UIActionSheet.alloc.initWithTitle(t("action_share"), 
                                                     delegate:self, 
-                                                    cancelButtonTitle:"Annuleer", 
+                                                    cancelButtonTitle:t("cancel_title"), 
                                                     destructiveButtonTitle:nil, 
                                                     otherButtonTitles:"Twitter", "E-mail", nil)
                                                      #"Google +", "Facebook",
                                                      
-    @paintSheet = UIActionSheet.alloc.initWithTitle("Geef groepen elementen dezelfde kleur", 
+    @paintSheet = UIActionSheet.alloc.initWithTitle(t("action_group"), 
                                                    delegate:self, 
-                                                   cancelButtonTitle:"Annuleer", 
+                                                   cancelButtonTitle:t("cancel_title"), 
                                                    destructiveButtonTitle:nil, 
-                                                   otherButtonTitles:"Muur", "Overig", nil)
+                                                   otherButtonTitles:t("wall"), t("other"), nil)
                                                      
     @calculatorVC = CalculatorVC.alloc.initWithStyle(UITableViewStyleGrouped)
     @calculatorVC.delegate = self      

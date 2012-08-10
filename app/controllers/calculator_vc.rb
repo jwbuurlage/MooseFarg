@@ -1,6 +1,7 @@
 class CalculatorVC < UITableViewController
-  Description = "Bereken hier de hoeveelheid verf die u nodig heeft."
-  Information = "Moose F: Muren (geschaafd en al geverfd hout)\nMoose RDM: Kozijnen, deuren, windveren\nMoose S: alleen voor ruw onbewerkt hout"
+  Description = t("calculator_description")
+  Information = t("calculator_information")
+  Warning = t("calculator_warning")
   
   Types = [
     ["Moose F", 5],
@@ -37,17 +38,25 @@ class CalculatorVC < UITableViewController
     headerView.addSubview(infoView)
         
     ## FOOTER   
-    footerView = UIView.alloc.initWithFrame([[0, 0], [0, 120]])
+    footerView = UIView.alloc.initWithFrame([[0, 0], [0, 180]])
+    
+    warningView = UITextView.alloc.initWithFrame([[10, 0], [300, 60]])
+    warningView.editable = false
+    warningView.backgroundColor = nil
+    warningView.font = UIFont.boldSystemFontOfSize(12.0)
+    warningView.textColor = UIColor.colorWithRed(0.22, green:0.33, blue:0.5, alpha:1.0)
+    warningView.text = Warning
+    footerView.addSubview(warningView)
           
     orderButton = UIButton.buttonWithType(UIButtonTypeRoundedRect)
-    orderButton.frame = [[10, 10], [300, 45]]
-    orderButton.setTitle("Bestel", forState:UIControlStateNormal)
+    orderButton.frame = [[10, 70], [300, 45]]
+    orderButton.setTitle(t("order_title"), forState:UIControlStateNormal)
     orderButton.addTarget(self, action:'orderTapped', forControlEvents:UIControlEventTouchUpInside)
     footerView.addSubview(orderButton)
     
     hideButton = UIButton.buttonWithType(UIButtonTypeRoundedRect)
-    hideButton.frame = [[10, 60], [300, 45]]
-    hideButton.setTitle("Verberg", forState:UIControlStateNormal)
+    hideButton.frame = [[10, 120], [300, 45]]
+    hideButton.setTitle(t("hide_title"), forState:UIControlStateNormal)
     hideButton.addTarget(self, action:'actionTapped', forControlEvents:UIControlEventTouchUpInside)
     footerView.addSubview(hideButton)
     
@@ -140,10 +149,10 @@ class CalculatorVC < UITableViewController
   
   def tableView(tableView, titleForHeaderInSection:section)
     result = case section
-      when 0 then "Muur"
-      when 1 then "Overig"
-      when 2 then "Emmers voor muur"
-      when 3 then "Emmers voor overig"
+      when 0 then t("wall")
+      when 1 then t("other")
+      when 2 then t("buckets_wall")
+      when 3 then t("buckets_other")
     end
   end
   

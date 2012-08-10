@@ -1,15 +1,11 @@
-class RegistrationVC < UITableViewController
+class RegistrationVC < UITableViewController    
   POSTMARK_API_KEY = "7d4a30d7-4ed1-4130-9b2b-8caa14831987"
-  Description = "Hier kunt u zich aanmelden voor de nieuwsbrief."
   
   Fields = [
-    ["Name", "Jan Jansen", :name],
-    ["Plaats", "Hoofddorp", :location],
-    ["Postcode", "1234 AB", :zipcode],
-    ["E-mail", "jan@jansen.nl", :email]
-    # ["Adres", "Dorpsstraat 123", :address],
-    # ["Tel.", "1234-123456", :telephone],
-    # ["Ken van", "Google", :how], 
+    [t("name_field"), t("name_placeholder"), :name],
+    [t("city_field"), t("city_placeholder"), :location],
+    [t("zip_field"), t("zip_placeholder"), :zipcode],
+    [t("email_field"), t("email_placeholder"), :email]
   ]
 
   attr_accessor :delegate
@@ -29,20 +25,20 @@ class RegistrationVC < UITableViewController
     descView.backgroundColor = nil
     descView.font = UIFont.boldSystemFontOfSize(16.0)
     descView.textColor = UIColor.colorWithRed(0.22, green:0.33, blue:0.5, alpha:1.0)
-    descView.text = Description
+    descView.text = t("registration_description")
     headerView.addSubview(descView)
         
     footerView = UIView.alloc.initWithFrame([[0, 0], [0, 160]])
     
     registerButton = UIButton.buttonWithType(UIButtonTypeRoundedRect)
     registerButton.frame = [[10, 10], [300, 45]]
-    registerButton.setTitle("Registreer", forState:UIControlStateNormal)
+    registerButton.setTitle(t("register_title"), forState:UIControlStateNormal)
     registerButton.addTarget(self, action:'register', forControlEvents:UIControlEventTouchUpInside)
     footerView.addSubview(registerButton)
     
     closeButton = UIButton.buttonWithType(UIButtonTypeRoundedRect)
     closeButton.frame = [[10, 60], [300, 45]]
-    closeButton.setTitle("Verberg", forState:UIControlStateNormal)
+    closeButton.setTitle(t("hide_title"), forState:UIControlStateNormal)
     closeButton.addTarget(self, action:'close', forControlEvents:UIControlEventTouchUpInside)
     footerView.addSubview(closeButton)
     
@@ -147,15 +143,15 @@ class RegistrationVC < UITableViewController
         
     case type
     when ERROR_EMPTY_FIELD
-      text = "Er zijn lege velden."
+      text = t("error_empty_field")
     when ERROR_INVALID_EMAIL
-      text = "U heeft een ongeldig e-mail adres ingevuld"
+      text = t("error_invalid_email")
     end
     
     alert = UIAlertView.alloc.init
     alert.title = "Error"
     alert.message = text
-    alert.addButtonWithTitle("Cancel")
+    alert.addButtonWithTitle(t("cancel_title"))
     alert.setCancelButtonIndex(0)
     alert.show
   end
